@@ -490,7 +490,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem
           <div class="cert-text-block">
             <div class="cert-text-pt">Este certificado é documento oficial de identificação na igreja,<br>emitida pela liderança competente da OAC em Moçambique.</div>
             <div class="cert-text-divider"></div>
-            <div class="cert-text-en">This certification is an official ministerial identification document,<br>issued by the competent leadership of OAC Mozambique.</div>
+            <div class="cert-text-en">This certificate is an official identification document in the church,
+issued by the competent leadership of the OAC in Mozambique.</div>
           </div>
         </div>
 
@@ -691,6 +692,10 @@ function emitirCredencial(){
   if(!selectedServo){ toast('Selecione um servo / Select a servant first.','error'); return; }
   const emissao=document.getElementById('e-emissao').value;
   const validade=document.getElementById('e-validade').value;
+  if((selectedServo.cargoPt == 'Tetradōm (FFO)') || selectedServo.cargoPt == 'Tetradômio (FFO)'){
+    selectedServo.cargoPt = 'Tetradōm (FFO)';
+    selectedServo.cargoEn = 'FFO';
+  }
 
   document.getElementById('cert-nome').textContent=selectedServo.nome;
   document.getElementById('cert-cargo-pt').textContent=selectedServo.cargoPt||selectedServo.cargo||'—';
